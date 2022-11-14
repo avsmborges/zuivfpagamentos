@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='S4ALIAS')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zui_fi_vf_pagamento" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZI_FI_STATUS_VF_VHType" sap:label="Ajuda de Pesquisa Status Vale Frete" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DomainValue"/>
+                </Key>
+                <Property Name="DomainValue" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="DomainText" sap:label="Valor inferior" sap:quickinfo="Valores p/domínios: valor ind./limite inferior"/>
+                <Property Name="DomainText" Type="Edm.String" MaxLength="60" sap:label="Descrição breve" sap:quickinfo="Texto breve para valores fixos"/>
+            </EntityType>
+            <EntityType Name="ZI_FI_TIPO_VF_VHType" sap:label="Ajuda de Pesquisa Tipo Vale Frete" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DomainValue"/>
+                </Key>
+                <Property Name="DomainValue" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="DomainText" sap:label="Valor inferior" sap:quickinfo="Valores p/domínios: valor ind./limite inferior"/>
+                <Property Name="DomainText" Type="Edm.String" MaxLength="60" sap:label="Descrição breve" sap:quickinfo="Texto breve para valores fixos"/>
+            </EntityType>
+            <EntityType Name="ValeFretePagamentosType" sap:label="Vale Frete - Pagamento" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zzvalefrete"/>
+                </Key>
+                <Property Name="Zzvalefrete" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="VF ID"/>
+                <Property Name="Ebeln" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Documento de compras" sap:quickinfo="Nº do documento de compras"/>
+                <Property Name="TpvaleFrete" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:text="TipoVFText" sap:label="Tipo de Vale Frete" sap:value-list="fixed-values"/>
+                <Property Name="SfirId" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="DFF" sap:quickinfo="Documento de faturamento de frete"/>
+                <Property Name="DataEmissao" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Data de criação" sap:quickinfo="Criar data"/>
+                <Property Name="UsCriador" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Criado por" sap:quickinfo="Nome do usuário"/>
+                <Property Name="DataModif" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Modificado em" sap:quickinfo="Data de modificação"/>
+                <Property Name="UsModif" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Modificado por" sap:quickinfo="Nome do usuário"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:text="StatusText" sap:label="Status Vale Frete" sap:value-list="fixed-values"/>
+                <Property Name="TipoVFText" Type="Edm.String" MaxLength="60" sap:label="Descrição breve" sap:quickinfo="Texto breve para valores fixos"/>
+                <Property Name="DocNumMdfe" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="MDFe"/>
+                <Property Name="Origem" Type="Edm.String" MaxLength="20" sap:text="Origem_Nome" sap:label="Origem" sap:quickinfo="Unidade gerencial"/>
+                <Property Name="Destino" Type="Edm.String" MaxLength="20" sap:text="Destino_Nome" sap:label="Destino" sap:quickinfo="Unidade gerencial"/>
+                <Property Name="Documento" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Documento Favorecido" sap:quickinfo="Nº ID fiscal para parceiro de negócios"/>
+                <Property Name="Favorecido" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="Favorecido_Nome" sap:label="Favorecido" sap:quickinfo="Proprietário do recurso"/>
+                <Property Name="Status_Pgto_Id" Type="Edm.String" MaxLength="1" sap:text="StatusPgtoText" sap:label="Status de Pagamento" sap:value-list="fixed-values"/>
+                <Property Name="Origem_Nome" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Favorecido_Nome" Type="Edm.String" MaxLength="81"/>
+                <Property Name="Destino_Nome" Type="Edm.String" MaxLength="80"/>
+                <Property Name="StatusText" Type="Edm.String" MaxLength="60" sap:label="Descrição breve" sap:quickinfo="Texto breve para valores fixos"/>
+                <Property Name="StatusPgtoText" Type="Edm.String" MaxLength="60" sap:label="Descrição breve" sap:quickinfo="Texto breve para valores fixos"/>
+                <Property Name="DomainText" Type="Edm.String" MaxLength="60" sap:label="Descrição breve" sap:quickinfo="Texto breve para valores fixos"/>
+            </EntityType>
+            <EntityType Name="ZI_FI_VF_PAMCARY_ST_PGTO_VHType" sap:label="Value Help para Status Pagamento" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DomainValue"/>
+                </Key>
+                <Property Name="DomainValue" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="DomainText" sap:label="Valor inferior" sap:quickinfo="Valores p/domínios: valor ind./limite inferior"/>
+                <Property Name="DomainText" Type="Edm.String" MaxLength="60" sap:label="Descrição breve" sap:quickinfo="Texto breve para valores fixos"/>
+            </EntityType>
+            <EntityContainer Name="cds_zui_fi_vf_pagamento_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZI_FI_STATUS_VF_VH" EntityType="cds_zui_fi_vf_pagamento.ZI_FI_STATUS_VF_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_FI_TIPO_VF_VH" EntityType="cds_zui_fi_vf_pagamento.ZI_FI_TIPO_VF_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ValeFretePagamentos" EntityType="cds_zui_fi_vf_pagamento.ValeFretePagamentosType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_FI_VF_PAMCARY_ST_PGTO_VH" EntityType="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAMCARY_ST_PGTO_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType/TpvaleFrete" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_FI_TIPO_VF_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TpvaleFrete"/>
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType/Status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_FI_STATUS_VF_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Status"/>
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType/Status_Pgto_Id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_FI_VF_PAMCARY_ST_PGTO_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Status_Pgto_Id"/>
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DomainText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.cds_zui_fi_vf_pagamento_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.cds_zui_fi_vf_pagamento_Entities/ValeFretePagamentos" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DataEmissao"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DataModif"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://10.1.16.41:8070/sap/opu/odata/sap/ZGW_FI_VF_PAGAMENTO/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://10.1.16.41:8070/sap/opu/odata/sap/ZGW_FI_VF_PAGAMENTO/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

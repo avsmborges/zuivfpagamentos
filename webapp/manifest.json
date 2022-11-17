@@ -72,6 +72,14 @@
                 "sap.ui.comp": {},
                 "sap.ui.generic.app": {},
                 "sap.suite.ui.generic.template": {}
+            },
+            "sap.ui.viewExtensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                        "controllerName": "dellavolpe.com.br.zuimmpgtinfra.ext.controller.ObjectPageExt",
+                        "sap.ui.generic.app": {}
+                    }
+                }
             }
         },
         "contentDensities": {
@@ -109,6 +117,18 @@
             "config": {},
             "routes": [],
             "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                        "controllerName": "br.com.dellavolpe.zuivfpagamentos.ext.controller.ObjectPageExt",
+                        "sap.ui.generic.app": {
+                            
+                        }
+                    }
+                }
+            }
         }
     },
     "sap.ui.generic.app": {

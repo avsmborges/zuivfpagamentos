@@ -20,12 +20,12 @@
                 "uri": "/sap/opu/odata/sap/ZGW_FI_VF_PAGAMENTO/",
                 "type": "OData",
                 "settings": {
+                    "odataVersion": "2.0",
                     "annotations": [
                         "ZGW_FI_VF_PAGAMENTO_VAN",
                         "annotation"
                     ],
-                    "localUri": "localService/metadata.xml",
-                    "odataVersion": "2.0"
+                    "localUri": "localService/metadata.xml"
                 }
             },
             "ZGW_FI_VF_PAGAMENTO_VAN": {
@@ -72,14 +72,6 @@
                 "sap.ui.comp": {},
                 "sap.ui.generic.app": {},
                 "sap.suite.ui.generic.template": {}
-            },
-            "sap.ui.viewExtensions": {
-                "sap.ui.controllerExtensions": {
-                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
-                        "controllerName": "dellavolpe.com.br.zuimmpgtinfra.ext.controller.ObjectPageExt",
-                        "sap.ui.generic.app": {}
-                    }
-                }
             }
         },
         "contentDensities": {
@@ -99,10 +91,7 @@
                 "settings": {
                     "defaultBindingMode": "TwoWay",
                     "defaultCountMode": "Inline",
-                    "refreshAfterChange": false,
-                    "metadataUrlParams": {
-                        "sap-value-list": "none"
-                    }
+                    "refreshAfterChange": false
                 }
             },
             "@i18n": {
@@ -124,9 +113,30 @@
                     "sap.suite.ui.generic.template.ObjectPage.view.Details": {
                         "controllerName": "br.com.dellavolpe.zuivfpagamentos.ext.controller.ObjectPageExt",
                         "sap.ui.generic.app": {
-                            
+                            "ValeFretePagamentos": {
+                                "EntitySet": "ValeFretePagamentos",
+                                "Sections": {
+                                    "Valores": {
+                                        "id": "Valores",
+                                        "Actions": {
+                                            "meioPagamento": {
+                                                "id": "meioPagamento",
+                                                "text": "Meio de Pagamento",
+                                                "press": "onMeioPagamento",
+                                                "requiresSelection": true,
+                                                "applicablePath": "meio_pgto_enabled"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
+                    },
+                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                        "controllerName": "br.com.dellavolpe.zuivfpagamentos.ext.controller.ListReportExt",
+                        "sap.ui.generic.app": {}
                     }
+
                 }
             }
         }

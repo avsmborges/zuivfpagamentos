@@ -23,6 +23,65 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema Namespace="zgw_fi_vf_pagamento_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_TOR_ETAPASType/TorId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_TOR_ETAPASType/PlanTransTime">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_TOR_ETAPASType/UnidadeOrigem">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_TOR_ETAPASType/UnidadeDestino">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_TOR_ETAPASType/Icon">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_TOR_ETAPASType">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String=""/>
+                        <PropertyValue Property="TypeNamePlural" String="Datas e Entregas"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="Icon"/>
+                            <PropertyValue Property="Value" Path="Status"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LogLocidP"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LogLocidS"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Data"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Hora"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ActualDate"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="HoraEfetiva"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType/TorId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType/TipoVFText">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -44,6 +103,9 @@
             <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType/DomainText">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType/Znamefil">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType/Status_Pgto_Id">
                 <Annotation Term="Common.Text" Path="StatusPgtoText">
                     <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
@@ -52,9 +114,21 @@
             <Annotations Target="cds_zui_fi_vf_pagamento.ValeFretePagamentosType">
                 <Annotation Term="UI.Facets">
                     <Collection>
-                        <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String="Dados do Documento"/>
-                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DadosDocumento"/>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Dados Documento"/>
+                            <PropertyValue Property="ID" String="DadosDocumentoHeader"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Informações do Documento"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DadosDocumento"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Informações das Notas"/>
+                                        <PropertyValue Property="Target" AnnotationPath="to_Dados/@UI.FieldGroup#InformacaoNotas"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
                         </Record>
                         <Record Type="UI.CollectionFacet">
                             <PropertyValue Property="Label" String="Dados da Viagem"/>
@@ -63,62 +137,26 @@
                                 <Collection>
                                     <Record Type="UI.ReferenceFacet">
                                         <PropertyValue Property="Label" String="Dados da Viagem"/>
-                                        <PropertyValue Property="Target" String="UI.FACET$3$">
-                                            <Annotation Term="Core.Messages">
-                                                <Collection>
-                                                    <Record>
-                                                        <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-000"/>
-                                                        <PropertyValue Property="message" String="Navigation property '_Dados' of annotation 'UI.FACET$3$' in proj./view 'ValeFretePagamentos' not found"/>
-                                                        <PropertyValue Property="severity" String="error"/>
-                                                    </Record>
-                                                </Collection>
-                                            </Annotation>
-                                        </PropertyValue>
+                                        <PropertyValue Property="Target" AnnotationPath="to_Dados/@UI.FieldGroup#Viagem"/>
                                     </Record>
                                     <Record Type="UI.ReferenceFacet">
                                         <PropertyValue Property="Label" String="Origem"/>
-                                        <PropertyValue Property="Target" String="UI.FACET$4$">
-                                            <Annotation Term="Core.Messages">
-                                                <Collection>
-                                                    <Record>
-                                                        <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-000"/>
-                                                        <PropertyValue Property="message" String="Navigation property '_Dados' of annotation 'UI.FACET$4$' in proj./view 'ValeFretePagamentos' not found"/>
-                                                        <PropertyValue Property="severity" String="error"/>
-                                                    </Record>
-                                                </Collection>
-                                            </Annotation>
-                                        </PropertyValue>
+                                        <PropertyValue Property="Target" AnnotationPath="to_Dados/@UI.FieldGroup#Origem"/>
                                     </Record>
                                     <Record Type="UI.ReferenceFacet">
                                         <PropertyValue Property="Label" String="Destino"/>
-                                        <PropertyValue Property="Target" String="UI.FACET$5$">
-                                            <Annotation Term="Core.Messages">
-                                                <Collection>
-                                                    <Record>
-                                                        <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-000"/>
-                                                        <PropertyValue Property="message" String="Navigation property '_Dados' of annotation 'UI.FACET$5$' in proj./view 'ValeFretePagamentos' not found"/>
-                                                        <PropertyValue Property="severity" String="error"/>
-                                                    </Record>
-                                                </Collection>
-                                            </Annotation>
-                                        </PropertyValue>
+                                        <PropertyValue Property="Target" AnnotationPath="to_Dados/@UI.FieldGroup#Destino"/>
                                     </Record>
                                 </Collection>
                             </PropertyValue>
                         </Record>
                         <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Informações de Datas e Entregas"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_Stops/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
                             <PropertyValue Property="Label" String="Pagamento"/>
-                            <PropertyValue Property="Target" String="UI.FACET$6$">
-                                <Annotation Term="Core.Messages">
-                                    <Collection>
-                                        <Record>
-                                            <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-000"/>
-                                            <PropertyValue Property="message" String="Navigation property '_Valores' of annotation 'UI.FACET$6$' in proj./view 'ValeFretePagamentos' not found"/>
-                                            <PropertyValue Property="severity" String="error"/>
-                                        </Record>
-                                    </Collection>
-                                </Annotation>
-                            </PropertyValue>
+                            <PropertyValue Property="Target" AnnotationPath="to_Valores/@UI.LineItem"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -162,6 +200,14 @@
                                     <PropertyValue Property="Value" Path="DocNumMdfe"/>
                                     <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                                 </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="NFnum9mdfe"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="bupla"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -196,7 +242,7 @@
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="TpvaleFrete"/>
+                            <PropertyValue Property="Value" Path="Ebeln"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -212,6 +258,10 @@
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TpvaleFrete"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Status_Pgto_Id"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
@@ -219,11 +269,228 @@
                 </Annotation>
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
-                        <PropertyPath>Zzvalefrete</PropertyPath>
-                        <PropertyPath>DataEmissao</PropertyPath>
-                        <PropertyPath>Documento</PropertyPath>
-                        <PropertyPath>Status_Pgto_Id</PropertyPath>
+                        <PropertyPath>Ebeln</PropertyPath>
                     </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/ValeFrete">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/IdLanc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/filialParam">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/Belnr">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/Gjahr">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/Status">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/digitalizacao1">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/bupla">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/Acao">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/SemAcao">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/CurrencyCode">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/gjahr_p">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/gjahr_p1">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/justificativa">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/meio_pgto_enabled">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/Justificar_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/Pagamento_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAGAMENTO_VALORES1Type">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Vale Frete - Pagamentos Valores"/>
+                        <PropertyValue Property="TypeNamePlural" String="Lista de Valores"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TipoValor"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Wrbtr"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="StatusDesc"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="digitalizacao1"/>
+                            <PropertyValue Property="Value" Path="digitalizacao"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="meio_pagto"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="meio_pagto_desc"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="belnr_p"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="belnr_p1"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="budat"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Justificar"/>
+                            <PropertyValue Property="Action" String="cds_zui_fi_vf_pagamento.cds_zui_fi_vf_pagamento_Entities/Justificar"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Meio de Pagamento"/>
+                            <PropertyValue Property="Action" String="">
+                                <Annotation Term="Core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="message" String="ERROR: Mandatory Value for Action not found"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Pagamento"/>
+                            <PropertyValue Property="Action" String="cds_zui_fi_vf_pagamento.cds_zui_fi_vf_pagamento_Entities/Pagamento"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAMCARY_DADOSType/ValeFrete">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_fi_vf_pagamento.ZI_FI_VF_PAMCARY_DADOSType">
+                <Annotation Term="UI.FieldGroup" Qualifier="Destino">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="EnderecoDestino"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DataChegada"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="UnidadeDestino"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="InformacaoNotas">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="NotasQtde"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="NotasQtdeDigi"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Origem">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="UnidadeOrigem"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DataPartida"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="EnderecoOrigem"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Viagem">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Proprietario"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="TipoProprietario"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Equiparacao"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Motorista"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Placa"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="RNTRC"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
         </Schema>

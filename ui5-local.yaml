@@ -36,7 +36,7 @@ server:
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
-        mountPath: /
+        mountPath: /resources
         services:
           - urlPath: /sap/opu/odata/sap/ZGW_FI_VF_PAGAMENTO
             metadataPath: ./webapp/localService/metadata.xml
